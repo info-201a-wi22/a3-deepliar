@@ -1,0 +1,45 @@
+---
+title: "Trends in Incarceration (A3)"
+author: "Zohaib Javed"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r summary, echo=FALSE, include = FALSE, message = FALSE, warnings = FALSE}
+source("../source/analysis.R")
+```
+
+## Project introduction
+An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+
+Incarceration has been a largely overlooked epidemic in the US for the past couple of decades. Millions across the US are jailed for a variety of reasons . But while all those who are jailed or imprisoned aren't done falsely, there are obvious structural deficits both residing within the incarceration system as well as within **communities of color**, including white people. These deficits contribute towards unjust and preventable jailed and imprisoned individuals. However, as the issue of incarceration is multi-faceted and complex, identifying specific issues that cause unjust or unfair incarceration are more difficult to find. As such, **identifying trends** in racial disparities of incarcerated individuals would help to better portray the problems leading to irregularly distributed populations within the jail system. 
+
+In order to help identify these structural problems and racial disparities within the jail system and people of color, sever different variables have been looked at to gain an initial high-level overview of understanding to see the problems at large. Specifically, throughout this report, variables of total jail population, white and black jail population, as well as rated jail capacities have been looked at. 
+
+## Summary Information 
+In order to understand the current overall situation of jailed individuals, the total_jail_pop variable was used. As such, the mean jail population across all counties within the most recent year was taken. This average population was found to be `r avg_total_jail_capacity`. This statistic is staggering to say the least. The fact that across many counties that are fairly small or mid sized compared to counties like King County in Washington that spans multiple large cities, the average amount of jailed people was above 300! In continuing to find more information on this variable, what was found was that the highest jail population recorded was in 2001 in Los Angeles, California with `r summary$max_jail_capacity` prisoners. Note that this was the jail and not the prison population, indicating lesser degrees and sentences of crimes. Another surprising statistic that was found was that over a 15 year interval beginning from 15 years before the max year in the data set, the rate_jail_capacity had increased by `r summary$cap_change_15yr` people! Meaning that over a 15-year period, instead of reducing the average capacity of jails which would partly indicate a healthier society, the opposite result was concluded. Money that could have been spent on social and public programs were instead diverted to funding prisons. Lastly, what was looked at was the proportion of black and white jail populations to the racial populations. What was found was that on average, the white jail population represented `r summary$avg_white_jail_pop`% of the total white population while the black jail population represented `r summary$avg_black_jail_pop`% of the total black population, on average. This solidifies present data analysis that indicates black people are 3-5 times more likely to get arrested and jailed when compared to white people. 
+
+These 5 statistics, while they help obtain a higher level understanding for the current and past situations of incarceration in America, they need the aid of to help understand the smaller facets of the issues regarding incarceration in America. 
+
+## Trends Over Time
+
+```{r pressure, echo=FALSE}
+#Trends over time chart
+plot(trends)
+```
+
+The above chart intends to describe trends of jail population by white and black people. Specifically, as shown by the chart title, this chart shows a proportion compared between white and black populations. The blue line represents the proportion of the black population in jail to the total black population. And the green line represents the white population in jail to the total white population over time. The axes were chosen as year and proportion to clearly represent how the incarceration rates for black and white people have changed over time. What this chart reveals is very interesting and a bit shocking. What we see is that while yes there has been a significant decrease in the proportion of the black population in jail, the white populations proportion has been increasing. What this indicates is that where the years in which black proportion started to decrease, the white population should have started to decrease, what happened was, it seems as some sourt of counter-effect, with the high reduction in black incarceration, white incarceration has started to increase. 
+
+## Comparison Chart 
+
+```{r pressuree, echo=FALSE}
+#Comparison of variables chart
+plot(comparison)
+```
+
+The above scatterplot was designed with two variables in mind: one was the jail rated capacity, and the other was the actual corresponding jail population. These parameters were used to show how jail capacities were filled on average across several counties. What the chart reveals is that through a 45 degree best fit line, we see that **more than half of counties' total jails** have a higher population than rated capacity. This makes sense because of the large deficit in the current prison structure, especially in private prisons where the main focus are **quotas**. This is the result of lawmakers, politicians, and prison owners to try to amke as much revenue, reach as many arrests and convictions, in order to falsely bloat data and illegitimately make money.This ties in with teh trend shown in chart 1 on how prop of white pop in jail was increasing when black prop was largely decreasing, supporting a quota theory. 
+
+As was previously stated, the issue of incarceration is complex, we need more thorough amount of data, as well as huge cooperation to identify more concnering trends and solve the solutions to their root problems, but through this report, a high-level understanding and a surface dive can pave the way to future progress. 
