@@ -35,11 +35,19 @@ The above chart intends to describe trends of jail population by white and black
 
 ## Comparison Chart 
 
-```{r pressuree, echo=FALSE}
+```{r pressuree, echo=FALSE, message = FALSE, warnings = FALSE}
 #Comparison of variables chart
 plot(comparison)
 ```
 
 The above scatterplot was designed with two variables in mind: one was the jail rated capacity, and the other was the actual corresponding jail population. These parameters were used to show how jail capacities were filled on average across several counties. What the chart reveals is that through a 45 degree best fit line, we see that **more than half of counties' total jails** have a higher population than rated capacity. This makes sense because of the large deficit in the current prison structure, especially in private prisons where the main focus are **quotas**. This is the result of lawmakers, politicians, and prison owners to try to amke as much revenue, reach as many arrests and convictions, in order to falsely bloat data and illegitimately make money.This ties in with teh trend shown in chart 1 on how prop of white pop in jail was increasing when black prop was largely decreasing, supporting a quota theory. 
 
-As was previously stated, the issue of incarceration is complex, we need more thorough amount of data, as well as huge cooperation to identify more concnering trends and solve the solutions to their root problems, but through this report, a high-level understanding and a surface dive can pave the way to future progress. 
+
+```{r map, echo=FALSE, message = FALSE, warnings = FALSE}
+#Comparison of variables chart
+plot(map)
+```
+
+Lastly, in order to see immigration-related arrests as well as where they most frequently, I created a map charting out each county's ratio of ICE arrests to the total jail population per county.What the mapping revealed is consistent with current research and findings. Which is that the most immigrated state to illegally is Texas. This exemplifies yet another fault in our criminal justice system. ICE is a group that exists solely to bust illegal immigrants, and they largely target those near the Mexican border especially in Texas. This is a huge problem, because not only does it encourage law enforcement to arrest people who they think could be illegal immigrants, it perpetuates a power system in which we build a society governed by rules to keep people out of our country by making it hard for them to get visas in the first place, and break up nuclear families already living here who may have arrived illegally. 
+
+As was previously stated, the issue of incarceration is complex, we need more thorough amount of data, as well as huge cooperation to identify more concerning trends and solve the solutions to their root problems, but through this report, a high-level understanding and a surface dive can pave the way to future progress.

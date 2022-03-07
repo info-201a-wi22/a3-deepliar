@@ -1,6 +1,10 @@
 library("tidyverse")
 library("ggplot2")
 library("dplyr")
+library("devtools")
+#devtools::install_github("UrbanInstitute/urbnmapr")
+library("urbnmapr")
+
 
 incarceration <- read.csv("https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv")
 View(incarceration)
@@ -117,3 +121,30 @@ comparison <- ggplot(data = jail_rated_cap_to_pop) +
     x = "Average Jail Population", # x-axis label
     y = "Average Jail Capacity", # y-axis label
   )
+
+#map showing counties with highest ice arrests
+#1. filter data set to counties with values for total jail and ice arrests in the most recent year
+#and make new column of proportion
+
+prop_ice_arrests_to_tot_jail <- incarceration %>%
+                                filter(year == max(year, na.rm = TRUE)) %>%
+                                select(fips, total_jail_pop, total_jail_from_ice) %>%
+                                na.omit() %>%
+                                filter(is.na(total_jail_pop) != TRUE & is.na(total_jail_from_ice) != TRUE) %>%
+                                mutate(prop_ice_to_jail = (total_jail_from_ice/total_jail_pop)*100 ) %>%
+                                mutate(fips = as.character(fips)) %>%
+                                select(fips, prop_ice_to_jail) %>%
+                                rename(county_fips = fips) %>%
+                                left_join(counties, by = "county_fips") %>%
+                                na.omit() %>%
+                                filter(prop_ice_to_jail != 0)
+
+#View(prop_ice_arrests_to_tot_jail)
+
+map <- prop_ice_arrests_to_tot_jail %>%
+  ggplot(aes(long, lat, group = group, fill = prop_ice_to_jail)) +
+  geom_polygon(color = NA) +
+  coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+  labs(fill = "Percent of jail from ICE Arrests")
+
+
